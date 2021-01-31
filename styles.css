@@ -28,6 +28,9 @@ h2{
    font-weight: normal;
    font-size: 1rem;
 
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .card p {
@@ -42,9 +45,12 @@ h2{
 }
 
 #data-table{
+   display: block;
    width: 100%;
    border-spacing: 0 0.75rem;
    color: #969cb3;
+
+   overflow-x: auto;
 }
 
 table th {
@@ -83,9 +89,15 @@ td.expanse {
 }
 
 table thead tr th:first-child,
-table tbody tr th:first-child {
-   border-radius: 0.75rem 0 0 0.75rem;
+table tbody tr td:first-child {
+   border-radius: 0.7rem 0 0 0.7rem;
 }
+
+table thead tr th:last-child,
+table tbody tr td:last-child {
+   border-radius: 0 0.7rem 0.7rem 0;
+}
+
 
 header {
    background: #2d4a22;
@@ -112,4 +124,162 @@ footer {
    padding: 4rem 0 2rem;
    color: #363f6f;
    opacity: 0.6;
+}
+
+.sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border-width: 0;
+}
+
+/* - - - - - - - - - - - - - - */
+/* - - - Links & Buttons - - - */
+/* - - - - - - - - - - - - - - */
+
+a{
+   text-decoration: none;
+   font-size: 1rem;
+   color: #49AA26;
+}
+
+a:hover{
+   color: #3DD705;
+}
+
+button {
+   width: 100%;
+   height: 50px;
+
+   border: none;
+
+   font-size: 1rem;
+   color: white;
+   background: #49aa26;
+   padding: 0;
+   border-radius: 0.5rem;
+
+   transition: background 100ms ease-in-out;
+
+   cursor: pointer;
+}
+
+button:hover {
+   background: #3DD705;
+}
+
+
+.button.new {
+   display: inline-block;
+   margin-bottom: .8rem;
+}
+
+.button.cancel {
+   color: #e92929;
+   border: 2px #e92929 solid;
+   border-radius: 0.5rem;
+
+   height: 50px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   transition: opacity 100ms ease-in-out;
+
+   opacity: 0.7;
+}
+
+.button.cancel:hover {
+   opacity: 1;
+}
+
+/* - - - - - - - - - - - - -*/
+/* - - - Responsivity - - - */
+/* - - - - - - - - - - - - -*/
+
+@media (min-width: 800px){
+   #balance{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+   }
+}
+
+/* - - - - - - - - - */
+/* - - - Modal - - - */
+/* - - - - - - - - - */
+
+.modal-overlay{
+   width: 100%;
+   height: 100%;
+
+   background-color: rgba(0, 0, 0, 0.7);
+
+   position: fixed;
+   top: 0;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   visibility: hidden;
+   opacity: 0;
+
+   transition: opacity 300ms;
+
+}
+
+.modal-overlay.active{
+   visibility: visible;
+   opacity: 1;
+}
+
+.modal {
+   background: #f0f2f5 ;
+   padding: 2.4rem;
+   width: min(90%, 400px);
+   position: relative;
+   z-index: 2;
+}
+
+/* - - - - - - - - -*/
+/* - - - Form - - - */
+/* - - - - - - - - -*/
+
+#form h2{
+   margin-top: 0;
+}
+
+input {
+   border: none;
+   border-radius: 0.25rem;
+   padding: 0.8rem;
+   width: 100%;
+   font-family: 'Poppins', sans-serif;
+}
+
+.input-group {
+   margin-top: 0.8rem;
+}
+
+.input-group small{
+   opacity: 0.4;
+}
+
+.input-group.actions{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+   width: 48%;
+   text-align: center;
 }

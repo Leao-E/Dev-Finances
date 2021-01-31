@@ -14,35 +14,49 @@
 </head>
 <body>
    <header>
-      <h1 id="logo">$av&dolla$</h1>
+      <img src="./assets/logo.svg" alt="Logo Dev.Finance$">
+      <!-- <h1 id="logo">$av&dolla$</h1> -->
    </header>
    <main class="container">
       <section id="balance">
-         <h2>Balanço</h2>
+         <h2 class="sr-only">Balanço</h2>
          <div class="card">
-            <h3>Entradas</h3>
+            <h3>
+               <span>Entradas</span>
+               <img src="./assets/income.svg" alt="Imagem de entradas">
+            </h3>
             <p>R$ 6.000,00</p>
          </div>
 
          <div class="card">
-            <h3>Saídas</h3>
+            <h3>
+               <span>Saídas</span>
+               <img src="./assets/expense.svg" alt="Imagem de saídas">
+            </h3>
             <p>R$ 1.000,00</p>
          </div>
 
          <div class="card total">
-            <h3>Total</h3>
+            <h3>
+               <span>Total</span>
+               <img src="./assets/total.svg" alt="Imagem de total">
+            </h3>
             <p>R$ 5.000,00</p>
          </div>
       </section>
 
       <section id="transactions">
-         <h2>Transações</h2>
+         <h2 class="sr-only">Transações</h2>
+
+         <a href="#" class="button new" onclick="Modal.open()">+ Nova Transação</a>
+
          <table id="data-table">
             <thead>
                <tr>
                   <th class="description">Descição</th>
                   <th class="">Valor</th>
                   <th>Data</th>
+                  <th style="width: 1%;"></th>
                </tr>
             </thead>
             <tbody>
@@ -50,23 +64,73 @@
                   <td class="description">Internet</td>
                   <td class="expanse">R$ -200,00</td>
                   <td class="date">21/02/2021</td>
+                  <td>
+                     <img src="./assets/minus.svg" alt="Remover transação">
+                  </td>
                </tr>
                <tr>
                   <td class="description">Salário</td>
                   <td class="income">R$ 6.000,00</td>
                   <td class="date">21/02/2021</td>
+                  <td>
+                     <img src="./assets/minus.svg" alt="Remover transação">
+                  </td>
                </tr>
                <tr>
                   <td class="description">Aluguel</td>
                   <td class="expanse">R$ -800,00</td>
                   <td class="date">21/02/2021</td>
+                  <td>
+                     <img src="./assets/minus.svg" alt="Remover transação">
+                  </td>
                </tr>
             </tbody>
          </table>
       </section>
    </main>
+
+   <div class="modal-overlay">
+      <div class="modal">
+         <div id="form">
+            <h2>Nova Transação</h2>
+            <form action="">
+               <div class="input-group">
+                  <label class="sr-only" for="description">Descrição</label>
+                  <input type="text" name="description" id="description" placeholder="Descrição">
+               </div>
+               <div class="input-group">
+                  <label class="sr-only" for="amount">Valor</label>
+                  <input type="number" step="0.01" name="amount" id="amount" placeholder="R$ 000,00">
+                  <small class="help">Use o sinal<strong> - </strong>(negativo) para depesas e<strong> , </strong>(vírgula) para casas decimais</small>
+               </div>
+               <div class="input-group">
+                  <label for="date">Data</label>
+                  <input type="date" name="date" id="date" placeholder="01/01/2021">
+               </div>
+
+               <div class="input-group actions">
+                  <a href="#" class="button cancel" onclick="Modal.close()">Cancelar</a>
+                  <button>Salvar</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
    <footer>
       <p>$av&dolla$</p>
    </footer>
+
+   <script>
+      const Modal = {
+         modalOverlay: document.querySelector('.modal-overlay'),
+         open() {
+            this.modalOverlay.classList.add('active');
+         },
+         close () {
+            this.modalOverlay.classList.remove('active');
+         }
+      }
+   </script>
 </body>
 </html>
